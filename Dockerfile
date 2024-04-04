@@ -11,7 +11,7 @@ VOLUME /tmp
 EXPOSE 8080
 
 # The application's war file
-ARG WAR_FILE=target/task-management.war
+ARG WAR_FILE=target/task-management/target/task-management-0.0.1-SNAPSHOT.war
 
 # Add the application's war to the container
 ADD ${WAR_FILE} task-management.war
