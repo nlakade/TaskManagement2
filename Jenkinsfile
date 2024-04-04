@@ -142,7 +142,7 @@ pipeline {
             steps {
                 script {
                     // Start the Spring Boot application
-                    sh 'java -jar target/my-spring-boot-app.jar &'
+                    sh 'java -jar target/task-management-0.0.1-SNAPSHOT.war &'
 
                     // Wait for the application to start (you may need to adjust the sleep time)
                     sleep 30
