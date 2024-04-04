@@ -9,7 +9,7 @@ services:
       - netaid
     volumes:
       - .:/task-management
-services:
+
   mysql:
     image: mysql:5.7
     environment:
