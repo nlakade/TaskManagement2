@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: '3.8'
 
 services:
@@ -34,3 +35,41 @@ services:
 networks:
   netaid:
     driver: bridge
+=======
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - netaid
+    volumes:
+      - .:/task-management
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: Nitesh@123
+      MYSQL_DATABASE: task_management
+    ports:
+      - "3306:3306"
+    networks:
+      - netaid
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    networks:
+      - netaid
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web
+
+networks:
+  netaid:
+    driver: bridge
+>>>>>>> 0a39c99 (docker changes)
