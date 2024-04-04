@@ -4,7 +4,7 @@ services:
   web:
     build: .
     ports:
-      - "8081:8080"
+      - "8081:8081"
     networks:
       - netaid
     volumes:
@@ -16,7 +16,7 @@ services:
       MYSQL_ROOT_PASSWORD: Nitesh@123
       MYSQL_DATABASE: task_management
     ports:
-      - "3307:3306"
+      - "3307:3307"
     networks:
       - netaid
 
