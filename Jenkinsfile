@@ -110,10 +110,10 @@
 pipeline {
     agent any
 
-    environment {
-        JAVA_HOME = tool 'jdk-11' // assuming 'jdk-11' is configured in Jenkins tools
-        PATH = "$JAVA_HOME/bin:$PATH"
-    }
+    // environment {
+    //     JAVA_HOME = tool 'jdk-11' // assuming 'jdk-11' is configured in Jenkins tools
+    //     PATH = "$JAVA_HOME/bin:$PATH"
+    // }
 
     stages {
         stage('Checkout') {
