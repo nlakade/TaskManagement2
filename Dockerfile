@@ -14,7 +14,7 @@ EXPOSE 8080
 ARG WAR_FILE=target/task-management-0.0.1-SNAPSHOT.war
 
 # Add the application's war to the container
-ADD ${WAR_FILE} task-management.war
+ADD ${WAR_FILE} task-management-0.0.1-SNAPSHOT.war
 
 # Run the war file
-ENTRYPOINT ["java","-jar","/task-management.war"]
+ENTRYPOINT ["java","-jar","/task-management-0.0.1-SNAPSHOT.war"]
