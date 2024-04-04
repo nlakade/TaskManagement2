@@ -30,7 +30,7 @@ LABEL maintainer="nlakade@cisco.com"
 VOLUME /tmp
 
 # Make port 8080 available to the world outside this container
-EXPOSE 8085
+EXPOSE 8080
 
 # The application's war file
 ARG WAR_FILE=target/task-management-0.0.1-SNAPSHOT.war
