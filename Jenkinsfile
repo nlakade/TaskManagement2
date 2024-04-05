@@ -157,7 +157,7 @@ pipeline {
             steps {
                 script {
                     // Install a specific version of Docker Compose
-                    sh 'curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
+                    sh 'curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o ~/docker-compose'
                     sh 'chmod +x /usr/local/bin/docker-compose'
 
                     // Check Docker Compose version
