@@ -157,15 +157,15 @@ pipeline {
             steps {
                 script {
                     // Install a specific version of Docker Compose
-                    sh 'curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose'
-                    sh 'chmod +x /usr/local/bin/docker-compose'
-
-
+                    def workspaceDir = pwd()
+                    sh "curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-\$(uname -s)-\$(uname -m) -o ${workspaceDir}/docker-compose"
+                    sh "chmod +x ${workspaceDir}/docker-compose"
+        
                     // Check Docker Compose version
-                    sh 'docker-compose --version'
-
+                    sh "${workspaceDir}/docker-compose --version"
+        
                     // Run Docker Compose
-                    sh 'docker-compose up -d'
+                    sh "${workspaceDir}/docker-compose up -d"
                 }
             }
         }
