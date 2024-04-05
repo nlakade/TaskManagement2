@@ -88,7 +88,7 @@ services:
       - .:/task-management
     environment:
       # Load environment variables from a separate file (`.env`)
-      - SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/task_management?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/task_management?createDatabaseIfNotExist=true
       - SPRING_DATASOURCE_USERNAME: root
       # Avoid storing password directly in the file (use `.env`)
       - SPRING_DATASOURCE_PASSWORD: 
