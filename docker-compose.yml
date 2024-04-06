@@ -130,7 +130,7 @@ services:
   task-management-web:
     build: .
     ports:
-      - "9092:9091"
+      - "9090:9090"
     networks:
       - task-management-network
     volumes:
@@ -143,19 +143,22 @@ services:
       # - SPRING_DATASOURCE_PASSWORD=Nitesh@123
       # - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       # - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL57Dialect
-      - SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/task_management?createDatabaseIfNotExist=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=Nitesh@123
-      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.MySQL57Dialect
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/task_management?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL57Dialect
       - SPRING_MVC_VIEW_PREFIX=/WEB-INF/view/
       - SPRING_MVC_VIEW_SUFFIX=.jsp
+      - SERVER_PORT=9090
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: Nitesh@123
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=task_management
       # Avoid storing password directly in the file (use `.env`)
-      MYSQL_DATABASE: task_management
+      
     ports:
       - "3307:3306"
     networks:
