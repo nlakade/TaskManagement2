@@ -143,15 +143,15 @@ services:
       # - SPRING_DATASOURCE_PASSWORD=Nitesh@123
       # - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       # - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL57Dialect
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/task_management?createDatabaseIfNotExist=true
-      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
-      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
-      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL57Dialect
-      - SPRING_MVC_VIEW_PREFIX=/WEB-INF/view/
-      - SPRING_MVC_VIEW_SUFFIX=.jsp
-      - SERVER_PORT=9090
+      - SPRING_DATASOURCE_URL=${spring.datasource.url}
+      - SPRING_DATASOURCE_USERNAME=${spring.datasource.username}
+      - SPRING_DATASOURCE_PASSWORD=${spring.datasource.password}
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=${spring.datasource.driver-class-name}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=${spring.jpa.hibernate.ddl-auto}
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=${spring.jpa.properties.hibernate.dialect}
+      - SPRING_MVC_VIEW_PREFIX=${spring.mvc.view.prefix}
+      - SPRING_MVC_VIEW_SUFFIX=${spring.mvc.view.suffix}
+      - SERVER_PORT=${server.port}
   mysql:
     image: mysql:5.7
     environment:
