@@ -21,7 +21,8 @@
 
 
 # Start with a base image containing Java runtime
-FROM eclipse-temurin:11-jdk-alpine
+# FROM eclipse-temurin:11-jdk-alpine
+FROM eclipse-temurin:21-alpine
 
 # Add Maintainer Info
 LABEL maintainer="nlakade@cisco.com"
