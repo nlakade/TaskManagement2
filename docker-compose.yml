@@ -144,6 +144,7 @@ services:
       spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
       spring.jpa.hibernate.ddl-auto=update
       spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+      spring.jpa.hibernate.ddl-auto=create-drop
       
       # View Resolver Properties
       spring.mvc.view.prefix=/WEB-INF/view/
