@@ -137,13 +137,19 @@ services:
       - .:/task-management
     environment:
       # Load environment variables from a separate file (`.env`)
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/task_management?createDatabaseIfNotExist=true
+      # - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/task_management?createDatabaseIfNotExist=true
+      # - SPRING_DATASOURCE_USERNAME=root
+      # # Avoid storing password directly in the file (use `.env`)
+      # - SPRING_DATASOURCE_PASSWORD=Nitesh@123
+      # - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      # - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL57Dialect
+      - SPRING_DATASOURCE_URL=jdbc:mysql://task_management:3306/task_management?createDatabaseIfNotExist=true
       - SPRING_DATASOURCE_USERNAME=root
-      # Avoid storing password directly in the file (use `.env`)
       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.MySQL57Dialect
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL57Dialect
-
+      - SPRING_MVC_VIEW_PREFIX=/WEB-INF/view/
+      - SPRING_MVC_VIEW_SUFFIX=.jsp
   mysql:
     image: mysql:5.7
     environment:
