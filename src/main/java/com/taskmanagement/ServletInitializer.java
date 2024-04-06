@@ -11,10 +11,12 @@
 // 	}
 
 // }
-import jakarta.servlet.ServletException;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.WebApplicationInitializer;
+
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 
 public class ServletInitializer extends SpringBootServletInitializer implements WebApplicationInitializer {
 
@@ -24,7 +26,8 @@ public class ServletInitializer extends SpringBootServletInitializer implements 
     }
 
     @Override
-    public void onStartup(javax.servlet.ServletContext servletContext) throws ServletException {
+    public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
     }
+
 }
