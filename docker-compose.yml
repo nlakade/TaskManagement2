@@ -124,6 +124,7 @@
 #     driver: bridge
 
 
+# docker-compose.yml
 version: '3.8'
 
 services:
@@ -136,30 +137,20 @@ services:
     volumes:
       - .:/task-management
     environment:
-      # Load environment variables from a separate file (`.env`)
-      # - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/task_management?createDatabaseIfNotExist=true
-      # - SPRING_DATASOURCE_USERNAME=root
-      # # Avoid storing password directly in the file (use `.env`)
-      # - SPRING_DATASOURCE_PASSWORD=Nitesh@123
-      # - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      # - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL57Dialect
-      - SPRING_DATASOURCE_URL=${spring.datasource.url}
-      - SPRING_DATASOURCE_USERNAME=${spring.datasource.username}
-      - SPRING_DATASOURCE_PASSWORD=${spring.datasource.password}
-      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=${spring.datasource.driver-class-name}
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=${spring.jpa.hibernate.ddl-auto}
-      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=${spring.jpa.properties.hibernate.dialect}
-      - SPRING_MVC_VIEW_PREFIX=${spring.mvc.view.prefix}
-      - SPRING_MVC_VIEW_SUFFIX=${spring.mvc.view.suffix}
-      - SERVER_PORT=${server.port}
+      - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
+      - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=${SPRING_JPA_HIBERNATE_DDL_AUTO}
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=${SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT}
+      - SPRING_MVC_VIEW_PREFIX=${SPRING_MVC_VIEW_PREFIX}
+      - SPRING_MVC_VIEW_SUFFIX=${SPRING_MVC_VIEW_SUFFIX}
+      - SERVER_PORT=${SERVER_PORT}
   mysql:
     image: mysql:5.7
     environment:
-      - MYSQL_ROOT_PASSWORD=Nitesh@123
-      
-      - MYSQL_DATABASE=task_management
-      # Avoid storing password directly in the file (use `.env`)
-      
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
     ports:
       - "3307:3306"
     networks:
