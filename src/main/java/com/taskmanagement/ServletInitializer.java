@@ -23,9 +23,4 @@ public class ServletInitializer extends SpringBootServletInitializer implements 
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(TaskManagementApplication.class);
     }
-
-    @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
-        super.onStartup(servletContext);
-    }
 }
