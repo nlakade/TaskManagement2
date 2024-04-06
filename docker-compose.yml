@@ -155,7 +155,8 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=Nitesh@123
+      
       - MYSQL_DATABASE=task_management
       # Avoid storing password directly in the file (use `.env`)
       
