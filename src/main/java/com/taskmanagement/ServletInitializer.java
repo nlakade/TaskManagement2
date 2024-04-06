@@ -13,8 +13,6 @@
 // }
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletException;
 import org.springframework.web.WebApplicationInitializer;
 
 public class ServletInitializer extends SpringBootServletInitializer implements WebApplicationInitializer {
@@ -22,5 +20,10 @@ public class ServletInitializer extends SpringBootServletInitializer implements 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(TaskManagementApplication.class);
+    }
+
+    @Override
+    public void onStartup(javax.servlet.ServletContext servletContext) throws ServletException {
+        super.onStartup(servletContext);
     }
 }
