@@ -143,6 +143,7 @@ pipeline {
                 script {
                     // Start the Spring Boot application
                     sh 'java -jar target/task-management-0.0.1-SNAPSHOT.war &'
+                    sh 'docker run -p 9091:9091 task-management'
 
                     // // Wait for the application to start (you may need to adjust the sleep time)
                     // sleep 30
