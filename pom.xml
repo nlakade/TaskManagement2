@@ -91,5 +91,26 @@
 			</plugin>
 		</plugins>
 	</build>
+        <build>
+		    <plugins>
+		        <!-- other plugins -->
+		        <!-- Log4j Maven Plugin -->
+		        <plugin>
+		            <groupId>org.apache.maven.plugins</groupId>
+		            <artifactId>maven-war-plugin</artifactId>
+		            <version>3.3.3</version>
+		            <configuration>
+		                <archive>
+		                    <manifestEntries>
+		                        <Specification-Title>Task Management</Specification-Title>
+		                        <Specification-Version>0.0.1-SNAPSHOT</Specification-Version>
+		                        <Implementation-Title>org.apache.logging.log4j</Implementation-Title>
+		                        <Implementation-Version>2.17.1</Implementation-Version>
+		                    </manifestEntries>
+		                </archive>
+		            </configuration>
+		        </plugin>
+		    </plugins>
+	</build>
 
 </project>
