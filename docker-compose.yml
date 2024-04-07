@@ -156,7 +156,7 @@ services:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
       - MYSQL_DATABASE=task_management
     ports:
-      - "3307:3307"
+      - "3307:3306"
     networks:
       - task-management-network
 
