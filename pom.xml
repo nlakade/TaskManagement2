@@ -18,6 +18,10 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+	<property>
+	    <name>hibernate.connection.driver_class</name>
+	    <value>com.mysql.cj.jdbc.Driver</value>
+	</property>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
