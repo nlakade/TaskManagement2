@@ -40,6 +40,27 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
 		</dependency>
+	        <!-- Protobuf Java -->
+	        <dependency>
+	            <groupId>com.google.protobuf</groupId>
+	            <artifactId>protobuf-java</artifactId>
+	            <version>3.21.7</version>
+	        </dependency>
+	
+	        <!-- Spring Framework -->
+	        <dependency>
+	            <groupId>org.springframework</groupId>
+	            <artifactId>spring-web</artifactId>
+	            <version>6.1.5</version>
+	        </dependency>
+	
+	        <!-- Apache Tomcat Embed -->
+	        <dependency>
+	            <groupId>org.apache.tomcat.embed</groupId>
+	            <artifactId>tomcat-embed-core</artifactId>
+	            <version>10.1.19</version>
+	        </dependency>
+
 
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
