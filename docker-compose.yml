@@ -160,6 +160,7 @@ services:
 
   nginx:
     build: ./nginx
+    image: nginx:1.21.0
     ports:
       - "80:80"
     networks:
@@ -171,4 +172,4 @@ services:
 
 networks:
   task-management-network:
-    driver: bridge
+    driver: bridge      
