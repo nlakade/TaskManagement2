@@ -137,16 +137,7 @@
 		    <version>5.0.0</version>
 		    <scope>provided</scope>
 		</dependency>	
-		<dependency>
-		    <groupId>com.github.t1</groupId>
-		    <artifactId>nghttp2</artifactId>
-		    <version>1.61.0</version>
-		</dependency>	
-		<dependency>
-		    <groupId>debian</groupId>
-		    <artifactId>dav1d</artifactId>
-		    <version>1.4.0-2</version>
-		</dependency>		
+			
 				
 	</dependencies>
 
