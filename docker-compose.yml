@@ -159,7 +159,6 @@ services:
       - task-management-network
 
   nginx:
-    build: ./nginx
     image: nginx:1.21.0
     ports:
       - "80:80"
