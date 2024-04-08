@@ -125,6 +125,54 @@
 
 
 # docker-compose.yml
+# version: '3.8'
+
+# services:
+#   task-management-web:
+#     build: .
+#     ports:
+#       - "9090:9090"
+#     networks:
+#       - task-management-network
+#     volumes:
+#       - .:/task-management
+#     environment:
+#       # MySQL Properties
+#       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3307/task_management?useSSL=false&serverTimezone=UTC
+#       - SPRING_DATASOURCE_USERNAME=root
+#       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
+#       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+#       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#       - SPRING_JPA_HIBERNATE_SHOW_SQL=true
+#       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL57Dialect
+#       - SPRING_MVC_VIEW_PREFIX=/WEB-INF/view/
+#       - SPRING_MVC_VIEW_SUFFIX=.jsp
+    
+#   mysql:
+#     image: mysql:5.7
+#     environment:
+#       - MYSQL_ROOT_PASSWORD=Nitesh@123
+#       - MYSQL_DATABASE=task_management
+#     ports:
+#       - "3307:3306"
+#     networks:
+#       - task-management-network
+
+#   nginx:
+#     image: nginx:1.21.0
+#     ports:
+#       - "80:80"
+#     networks:
+#       - task-management-network
+#     volumes:
+#       - ./nginx.conf:/etc/nginx/nginx.conf
+#     depends_on:
+#       - task-management-web
+
+# networks:
+#   task-management-network:
+#     driver: bridge      
+
 version: '3.8'
 
 services:
@@ -171,4 +219,4 @@ services:
 
 networks:
   task-management-network:
-    driver: bridge      
+    driver: bridge
