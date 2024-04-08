@@ -149,7 +149,7 @@ services:
       - SPRING_MVC_VIEW_SUFFIX=.jsp
     
   mysql:
-    image: mysql:5.7
+    build: ./mysql
     environment:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
       - MYSQL_DATABASE=task_management
@@ -159,7 +159,7 @@ services:
       - task-management-network
 
   nginx:
-    image: nginx:latest
+    build: ./nginx
     ports:
       - "80:80"
     networks:
