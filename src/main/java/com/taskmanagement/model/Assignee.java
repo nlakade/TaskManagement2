@@ -6,8 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity
-public class Assignee {
+@Entity 
+public class Assigner {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -40,7 +40,7 @@ public class Assignee {
 	
 	@Column(name="Department")
 	private String department;
-	
+
 	public int getId() {
 		return id;
 	}
