@@ -198,8 +198,6 @@ services:
     
   mysql:
     image: mysql:5.7
-    volumes:
-      - ./my.cnf:/etc/mysql/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
       - MYSQL_DATABASE=task_management
