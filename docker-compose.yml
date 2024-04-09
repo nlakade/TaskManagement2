@@ -180,7 +180,8 @@ services:
     container_name:mysqldb
     image:mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=Nitesh@12
+      - MYSQL_ROOT_PASSWORD=Nitesh@123
+      - MYSQL_DATABASE=task_management
     ports:
       - "3306:3306"
     networks:
@@ -188,7 +189,6 @@ services:
     volumes:
       - ./data:/var/lib/mysql
 
-      
   task-management-web:
     build: .
     ports:
@@ -199,13 +199,13 @@ services:
       - .:/task-management
     environment:
       # MySQL Properties
-      - MYSQL_HOST:mysqldb
+      - MYSQL_HOST=mysqldb
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
       - SPRING_MVC_VIEW_PREFIX=/WEB-INF/view/
       - SPRING_MVC_VIEW_SUFFIX=.jsp
-    
+
   nginx:
     image: nginx:1.21.0
     ports:
