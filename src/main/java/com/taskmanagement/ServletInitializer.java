@@ -25,8 +25,6 @@ public class ServletInitializer extends SpringBootServletInitializer implements 
 
         servletContext.addListener(new ContextLoaderListener(context));
 
-        SpringApplication application = new SpringApplication(getApplicationClass());
-        application.setWebApplicationType(WebApplicationType.SERVLET);
-        application.run(context.getDefaultConfigLocations());
+        SpringApplication.run(getApplicationClass(), servletContext.getInitParameterNames(), servletContext.getInitParameterValues());
     }
 }
