@@ -176,8 +176,8 @@
 version: '3.8'
 
 services:
-  mysqldb: 
-    container_name: mysqldb
+  localhost: 
+    container_name: localhost
     image: mysql
     environment:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
@@ -199,7 +199,7 @@ services:
       - .:/task-management
     environment:
       # MySQL Properties
-      - MYSQL_HOST=mysqldb
+      - MYSQL_HOST=localhost
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
