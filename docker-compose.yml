@@ -198,7 +198,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
       - MYSQL_DATABASE=task_management
-      
+      - MYSQL_USERNAME=root
 
     networks:
       - task-management-network
