@@ -177,8 +177,8 @@ version: '3.8'
 
 services:
   mysqldb: 
-    container_name: mysqldb
-    image: mysql
+    container_name:mysqldb
+    image:mysql
     environment:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
       - MYSQL_DATABASE=task_management
@@ -200,7 +200,7 @@ services:
       - .:/task-management
     environment:
       # MySQL Properties
-      - MYSQL_HOST: mysqldb
+      - MYSQL_HOST:mysqldb
       # - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/task_management?useSSL=false&serverTimezone=UTC
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
