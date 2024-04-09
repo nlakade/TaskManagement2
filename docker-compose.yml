@@ -180,8 +180,7 @@ services:
     container_name:mysqldb
     image:mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=Nitesh@123
-      - MYSQL_DATABASE=task_management
+      - MYSQL_ROOT_PASSWORD=Nitesh@12
     ports:
       - "3306:3306"
     networks:
