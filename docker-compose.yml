@@ -218,4 +218,3 @@ services:
 
 networks:
   task-management-network:
-    driver: bridge
