@@ -176,12 +176,22 @@
 version: '3.8'
 
 services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=Nitesh@123
+      - MYSQL_DATABASE=task_management
+    ports:
+      - "3306:3306"
+    networks:
+      - task-management-network
+
   task-management-web:
     build: .
     ports:
       - "9090:9090"
     depends_on:
-        - mysql
+      - mysql
     networks:
       - task-management-network
     volumes:
@@ -195,16 +205,6 @@ services:
       - SPRING_MVC_VIEW_PREFIX=/WEB-INF/view/
       - SPRING_MVC_VIEW_SUFFIX=.jsp
     
-  mysql:
-    image: mysql:5.7
-    environment:
-      - MYSQL_ROOT_PASSWORD=Nitesh@123
-      - MYSQL_DATABASE=task_management
-    ports:
-      - "3306:3306"
-    networks:
-      - task-management-network
-
   nginx:
     image: nginx:1.21.0
     ports:
