@@ -5,6 +5,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -24,7 +26,7 @@ public class ServletInitializer extends SpringBootServletInitializer implements 
         servletContext.addListener(new ContextLoaderListener(context));
 
         SpringApplication application = new SpringApplication(getApplicationClass());
-        application.setWebApplicationType(SpringBootApplication.WebApplicationType.SERVLET);
+        application.setWebApplicationType(WebApplicationType.SERVLET);
         application.run(context.getDefaultConfigLocations());
     }
 }
