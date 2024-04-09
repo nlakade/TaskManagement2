@@ -180,6 +180,8 @@ services:
     build: .
     ports:
       - "9090:9090"
+    depends_on:
+        - mysql
     networks:
       - task-management-network
     volumes:
