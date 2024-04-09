@@ -186,7 +186,7 @@ services:
       - .:/task-management
     environment:
       # MySQL Properties
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3307/task_management?useSSL=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/task_management?useSSL=false&serverTimezone=UTC
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
@@ -204,7 +204,7 @@ services:
       - MYSQL_USER:root
       - MYSQL_PASSWORD:Nitesh@123 
     ports:
-      - "3307:3307"
+      - "3306:3306"
     networks:
       - task-management-network
 
