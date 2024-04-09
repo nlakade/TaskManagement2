@@ -204,7 +204,7 @@ services:
       - MYSQL_USER:root
       - MYSQL_PASSWORD:Nitesh@123 
     ports:
-      - "3307:3306"
+      - "3307:3307"
     networks:
       - task-management-network
 
