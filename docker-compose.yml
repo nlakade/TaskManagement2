@@ -217,6 +217,7 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - hibernate.hbm2ddl.auto=none
       
+      
   nginx:
     image: nginx:1.21.0
     ports:
