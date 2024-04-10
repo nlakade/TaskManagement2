@@ -244,7 +244,7 @@ services:
       - MYSQL_DATABASE=task_management
     command: --default-authentication-plugin=mysql_native_password
     ports:
-      - "3307:3306"
+      - "3306:3306"
     networks:
       - task-management-network
     
@@ -264,6 +264,7 @@ services:
       - hibernate.hbm2ddl.auto=none
     depends_on:
       - mysqldb
+    command: bash -c "java -Djava.security.egd=file:/dev/./urandom TaskManagementApplication"
 
   nginx:
     image: nginx:1.21.0
