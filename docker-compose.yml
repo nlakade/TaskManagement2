@@ -182,6 +182,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
       - MYSQL_DATABASE=task_management
+    command: --default-authentication-plugin=mysql_native_password
     ports:
       - "3307:3306"
     networks:
