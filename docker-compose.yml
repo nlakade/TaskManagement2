@@ -199,7 +199,7 @@ services:
       - .:/task-management
     environment:
       # MySQL Properties
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3307/task_management?useSSL=FALSE?serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3307/task_management?useSSL=FALSE&serverTimezone=UTC&allowPublicKeyRetrieval=true
       - MYSQL_HOST=localhost
       - SPRING_DATASOURCE_USERNAME=newuser
       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
