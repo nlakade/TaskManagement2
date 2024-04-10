@@ -178,7 +178,7 @@ version: '3.8'
 services:
   mysqldb: 
     container_name: mysqldb
-    image: mysql
+    image: mysql:8.0.28
     environment:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
       - MYSQL_DATABASE=task_management
