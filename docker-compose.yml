@@ -186,9 +186,7 @@ services:
       - "3307:3306"
     networks:
       - task-management-network
-    volumes:
-      - ./data:/var/lib/mysql
-
+    
   task-management-web:
     build: .
     ports:
