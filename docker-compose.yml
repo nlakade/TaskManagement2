@@ -264,7 +264,6 @@ services:
       - hibernate.hbm2ddl.auto=none
     depends_on:
       - mysqldb
-    command: bash -c "java -Djava.security.egd=file:/dev/./urandom TaskManagementApplication"
 
   nginx:
     image: nginx:1.21.0
