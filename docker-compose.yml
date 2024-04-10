@@ -215,6 +215,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - hibernate.hbm2ddl.auto=none
       
   nginx:
     image: nginx:1.21.0
