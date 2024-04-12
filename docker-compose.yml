@@ -293,7 +293,6 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     networks:
       mynetwork:
-        ipv4_address: 10.0.0.2
 
   task-management-web:
     build: .
@@ -301,7 +300,8 @@ services:
       - "9090:9090"
     networks:
       mynetwork:
-        ipv4_address: 10.0.0.3
+        links:
+          - mysqldb
     volumes:
       - .:/task-management
     environment:
@@ -318,8 +318,14 @@ services:
       - "80:80"
     networks:
       mynetwork:
-        ipv4_address: 10.0.0.4
+        links:
+          - task-management-web
     volumes:
       - .:/task-management
-    depends_on:
-      - task-management-web
+
+networks:
+  mynetwork:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
