@@ -233,54 +233,6 @@
 #     driver: bridge
 
 
-# version: '3.8'
-
-# services:
-#   mysqldb:
-#     container_name: mysqldb
-#     image: mysql:8.0.28
-#     environment:
-#       - MYSQL_ROOT_PASSWORD=Nitesh@123
-#       - MYSQL_DATABASE=task_management
-#     command: --default-authentication-plugin=mysql_native_password
-   
-#     networks:
-#       - task-management-network
-    
-#   task-management-web:
-#     build: .
-#     ports:
-#       - "9090:9090"
-#     networks:
-#       - task-management-network
-#     volumes:
-#       - .:/task-management
-#     environment:
-#       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
-#       - SPRING_DATASOURCE_USERNAME=root
-#       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
-#       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-#       - hibernate.hbm2ddl.auto=none
-#     depends_on:
-#       - mysqldb
-
-#   nginx:
-#     image: nginx:1.21.0
-#     ports:
-#       - "80:80"
-#     networks:
-#       - task-management-network
-#     volumes:
-#       - ./nginx.conf:/etc/nginx/nginx.conf
-#     depends_on:
-#       - task-management-web
-
-# networks:
-#   task-management-network:
-#     driver: bridge
-
-
-
 version: '3.8'
 
 services:
@@ -291,41 +243,41 @@ services:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
       - MYSQL_DATABASE=task_management
     command: --default-authentication-plugin=mysql_native_password
+   
     networks:
-      mynetwork:
-
+      - task-management-network
+    
   task-management-web:
     build: .
     ports:
       - "9090:9090"
     networks:
-      mynetwork:
-        links:
-          - mysqldb
+      - task-management-network
     volumes:
       - .:/task-management
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
-      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - SPRING_JPA_SHOW_SQL=true
+      - hibernate.hbm2ddl.auto=none
+    depends_on:
+      - mysqldb
 
   nginx:
-    image: nginx:1.21.6
+    image: nginx:1.21.0
     ports:
       - "80:80"
     networks:
-      mynetwork:
-        links:
-          - task-management-web
+      - task-management-network
     volumes:
-      - .:/task-management
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - task-management-web
 
 networks:
-  mynetwork:
+  task-management-network:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 10.0.0.0/24
+
+
+
