@@ -346,7 +346,8 @@ services:
     ports:
       - "9090:9090"
     networks:
-      - task-management-network
+      task-management-network:
+        ipv4_address: 10.1.0.3
     volumes:
       - .:/task-management
     environment:
@@ -357,10 +358,6 @@ services:
       - hibernate.hbm2ddl.auto=none
     depends_on:
       - mysqldb
-    networks:
-      - task-management-network
-      - task-management-network:
-          ipv4_address: 10.1.0.3
 
   nginx:
     image: nginx:1.21.0
@@ -379,4 +376,3 @@ networks:
     ipam:
       config:
         - subnet: 10.1.0.0/24
-
