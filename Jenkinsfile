@@ -209,7 +209,7 @@ pipeline {
             steps {
                 script {
                     // Run the Spring Boot application in a separate container
-                    sh 'docker run -d -p 9090:9090 task-management'
+                    sh 'docker run -d -p 10.1.0.3:9090 task-management'
 
                     // // Wait for the application to start (you may need to adjust the sleep time)
                     // sleep 30
