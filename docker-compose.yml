@@ -288,7 +288,7 @@ services:
     image: mysql:8.0.28
     networks:
       task-management-network:
-        ipv4_address: 10.0.0.2
+        ipv4_address: 10.1.0.2
     environment:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
       - MYSQL_DATABASE=task_management
@@ -298,7 +298,7 @@ services:
     build: .
     networks:
       task-management-network:
-        ipv4_address: 10.0.0.3
+        ipv4_address: 10.1.0.3
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
 
@@ -306,7 +306,7 @@ services:
     image: nginx:1.21.0
     networks:
       task-management-network:
-        ipv4_address: 10.0.0.4
+        ipv4_address: 10.1.0.4
     depends_on:
       - task-management-web
 
@@ -315,4 +315,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 10.0.0.0/24
+        - subnet: 10.1.0.0/24
