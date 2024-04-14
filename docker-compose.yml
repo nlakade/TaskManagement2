@@ -280,44 +280,6 @@
 #     driver: bridge
 
 
-# version: '3.8'
-
-# services:
-#   mysqldb:
-#     container_name: mysqldb
-#     image: mysql:8.0.28
-#     networks:
-#       task-management-network:
-
-#     environment:
-#       - MYSQL_ROOT_PASSWORD=Nitesh@123
-#       - MYSQL_DATABASE=task_management
-#     command: --default-authentication-plugin=mysql_native_password
-
-#   task-management-web:
-#     build: .
-#     networks:
-#       task-management-network:
-#         ipv4_address: 10.1.0.3
-#     environment:
-#       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
-
-#   nginx:
-#     image: nginx:1.21.0
-#     networks:
-#       task-management-network:
-#         ipv4_address: 10.1.0.4
-#     depends_on:
-#       - task-management-web
-
-# networks:
-#   task-management-network:
-#     driver: bridge
-#     ipam:
-#       config:
-#         - subnet: 10.1.0.0/24
-
-
 version: '3.8'
 
 services:
@@ -325,7 +287,7 @@ services:
     container_name: mysqldb
     image: mysql:8.0.28
     networks:
-      - task-management-network
+      task-management-network:
 
     environment:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
@@ -335,14 +297,16 @@ services:
   task-management-web:
     build: .
     networks:
-      - task-management-network
+      task-management-network:
+        ipv4_address: 10.1.0.3
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
 
   nginx:
     image: nginx:1.21.0
     networks:
-      - task-management-network
+      task-management-network:
+        ipv4_address: 10.1.0.4
     depends_on:
       - task-management-web
 
@@ -352,3 +316,5 @@ networks:
     ipam:
       config:
         - subnet: 10.1.0.0/24
+
+
