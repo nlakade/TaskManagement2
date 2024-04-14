@@ -328,9 +328,3 @@ networks:
       config:
         - subnet: 10.1.0.0/24
 
-# The endpoint configuration for the task-management-web service will look like this:
-task-management-web:
-    ...
-    networks:
-      - task-management-network:
-          ipv4_address: 10.1.0.3
