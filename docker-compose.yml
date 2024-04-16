@@ -361,7 +361,7 @@ services:
   task-management-web-2:
     build: .
     ports:
-      - "9091:9091"
+      - "9091:9090"  # Corrected port mapping
     networks:
       - task-management-network
     volumes:
@@ -378,7 +378,7 @@ services:
   task-management-web-3:
     build: .
     ports:
-      - "9092:9092"
+      - "9092:9090"  # Corrected port mapping
     networks:
       - task-management-network
     volumes:
