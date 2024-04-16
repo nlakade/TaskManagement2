@@ -329,91 +329,30 @@
 #         - subnet: 10.1.0.0/24
 
 
-version: '3.8'
+events {
+  worker_connections 1024;
+}
 
-services:
-  mysqldb:
-    container_name: mysqldb
-    image: mysql:8.0.28
-    environment:
-      - MYSQL_ROOT_PASSWORD=Nitesh@123
-      - MYSQL_DATABASE=task_management
-    command: --default-authentication-plugin=mysql_native_password
-    networks:
-      - task-management-network
-    
-  task-management-web-1:
-    build: .
-    ports:
-      - "9090:9090"
-    networks:
-      - task-management-network
-    volumes:
-      - .:/task-management
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=Nitesh@123
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - hibernate.hbm2ddl.auto=none
-    depends_on:
-      - mysqldb
+http {
+  server {
+    listen 9091;
+    location / {
+      proxy_pass http://localhost:9090;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+  }
 
-  task-management-web-2:
-    build: .
-    ports:
-      - "9091:9091"
-    networks:
-      - task-management-network
-    volumes:
-      - .:/task-management
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=Nitesh@123
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - hibernate.hbm2ddl.auto=none
-    depends_on:
-      - mysqldb
-
-  task-management-web-3:
-    build: .
-    ports:
-      - "9092:9092"
-    networks:
-      - task-management-network
-    volumes:
-      - .:/task-management
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=Nitesh@123
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - hibernate.hbm2ddl.auto=none
-    depends_on:
-      - mysqldb
-
-  nginx:
-    image: nginx:1.21.0
-    ports:
-      - "80:80"
-    networks:
-      - task-management-network
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - task-management-web-1
-      - task-management-web-2
-      - task-management-web-3
-
-networks:
-  task-management-network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.1.0.0/24
-
-
-
-
-
+  server {
+    listen 9092;
+    location / {
+      proxy_pass http://localhost:9090;
+      proxy_set_header Host $host;
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-Proto $scheme;
+    }
+  }
+}
