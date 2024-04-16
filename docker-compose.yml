@@ -342,7 +342,7 @@ services:
     networks:
       - task-management-network
     
-  task-management-web:
+  task-management-web-1:
     build: .
     ports:
       - "9090:9090"
@@ -359,7 +359,7 @@ services:
     depends_on:
       - mysqldb
 
-  task-management-web:
+  task-management-web-2:
     build: .
     ports:
       - "9091:9091"
@@ -376,7 +376,7 @@ services:
     depends_on:
       - mysqldb
 
-  task-management-web:
+  task-management-web-3:
     build: .
     ports:
       - "9092:9092"
@@ -402,7 +402,9 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
-      - task-management-web
+      - task-management-web-1
+      - task-management-web-2
+      - task-management-web-3
 
 networks:
   task-management-network:
@@ -410,6 +412,7 @@ networks:
     ipam:
       config:
         - subnet: 10.1.0.0/24
+
 
 
 
