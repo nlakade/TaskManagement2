@@ -212,10 +212,10 @@ pipeline {
                     sh 'docker run -d -p 9090:9090 task-management'
 
                    // Run the Spring Boot application in a separate container on port 9091
-                    sh 'docker run -d -p 9091:9090 task-management'
+                    sh 'docker run -d -p 9091:9091 task-management'
 
                     // Run the Spring Boot application in a separate container on port 9092
-                    sh 'docker run -d -p 9092:9090 task-management'
+                    sh 'docker run -d -p 9092:9092 task-management'
                        
 
                     // // Wait for the application to start (you may need to adjust the sleep time)
