@@ -466,6 +466,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - hibernate.hbm2ddl.auto=none
+      - server.port=9091
       - SPRING_PROFILES_ACTIVE=task-management-web-2     
     depends_on:
       - mysqldb    
@@ -489,6 +490,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - hibernate.hbm2ddl.auto=none
+      - server.port=9092
       - SPRING_PROFILES_ACTIVE=task-management-web-3    
     depends_on:
       - mysqldb    
