@@ -471,7 +471,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=task-management-web-3
 
- nginx:
+  nginx:
     image: nginx:1.21.0
     ports:
       - "80:80"
