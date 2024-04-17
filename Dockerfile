@@ -40,4 +40,4 @@ ARG WAR_FILE=target/task-management-0.0.1-SNAPSHOT.war
 ADD ${WAR_FILE} task-management-0.0.1-SNAPSHOT.war
 
 # Run the war file
-ENTRYPOINT ["java","-jar","--spring.config.location=file:/application-${PORT}.properties"]
+ENTRYPOINT ["java","-jar","/task-management-0.0.1-SNAPSHOT.war"]
