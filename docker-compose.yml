@@ -471,6 +471,20 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=task-management-web-3
 
+ nginx:
+    image: nginx:1.21.0
+    ports:
+      - "80:80"
+    networks:
+      - task-management-network
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - task-management-web-1
+      - task-management-web-2
+      - task-management-web-3
+     
+
 networks:
   task-management-network:
     driver: bridge
