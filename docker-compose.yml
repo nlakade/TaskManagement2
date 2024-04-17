@@ -446,7 +446,7 @@ services:
       context: .
       args:
         WAR_FILE: target/task-management-0.0.1-SNAPSHOT.war
-        APPLICATION_PROPERTIES_FILE: application1.properties
+        APPLICATION_PROPERTIES_FILE: application-1.properties
     ports:
       - "9091:9091"  # Corrected port mapping
     networks:
@@ -461,7 +461,7 @@ services:
       context: .
       args:
         WAR_FILE: target/task-management-0.0.1-SNAPSHOT.war
-        APPLICATION_PROPERTIES_FILE: application2.properties
+        APPLICATION_PROPERTIES_FILE: application-2.properties
     ports:
       - "9092:9092"  # Corrected port mapping
     networks:
