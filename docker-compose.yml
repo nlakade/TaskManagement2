@@ -365,7 +365,7 @@ services:
     networks:
       - task-management-network
     volumes:
-      - .:/task-management
+      - .:/task-management1
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
       - SPRING_DATASOURCE_USERNAME=root
@@ -382,7 +382,7 @@ services:
     networks:
       - task-management-network
     volumes:
-      - .:/task-management
+      - .:/task-management2
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
       - SPRING_DATASOURCE_USERNAME=root
