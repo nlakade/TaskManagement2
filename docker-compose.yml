@@ -416,8 +416,8 @@
 version: '3.8'
 
 services:
-  mysqldb:
-    container_name: mysqldb
+  mysqldb1:
+    container_name: mysqldb1
     image: mysql:8.0.28
     environment:
       - MYSQL_ROOT_PASSWORD=Nitesh@123
@@ -446,7 +446,7 @@ services:
       - hibernate.hbm2ddl.auto=none
       - SPRING_PROFILES_ACTIVE=task-management-web-1      
     depends_on:
-      - mysqldb    
+      - mysqldb1    
 
   task-management-web-2:
     build:
@@ -469,7 +469,7 @@ services:
       - server.port=9091
       - SPRING_PROFILES_ACTIVE=task-management-web-2     
     depends_on:
-      - mysqldb    
+      - mysqldb1    
 
  
   task-management-web-3:
@@ -493,7 +493,7 @@ services:
       - server.port=9092
       - SPRING_PROFILES_ACTIVE=task-management-web-3    
     depends_on:
-      - mysqldb    
+      - mysqldb1    
 
  
   nginx:
