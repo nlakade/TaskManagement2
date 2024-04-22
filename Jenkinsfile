@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     // Run the Spring Boot application in a separate container
-                    sh 'docker run -d -p 9090:9090 task-management'
+                    sh 'docker run -d -p 9091:9091 task-management'
 
                    // // Run the Spring Boot application in a separate container on port 9091
                    //  sh 'docker run -d -p 9091:9091 task-management'
