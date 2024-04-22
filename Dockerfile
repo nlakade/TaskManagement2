@@ -31,6 +31,7 @@ LABEL maintainer="nlakade@cisco.com"
 VOLUME /tmp
 
 # Make port 8080 available to the world outside this container
+
 EXPOSE 9090
 
 # The application's war file
