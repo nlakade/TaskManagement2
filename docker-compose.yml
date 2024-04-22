@@ -639,7 +639,7 @@ services:
   task-management-web:
     build: .
     ports:
-      - "9090:9090"
+      - "9090"
     networks:
       - task-management-network
      
