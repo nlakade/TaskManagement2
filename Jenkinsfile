@@ -15,17 +15,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                script {
-                    sh 'mvn clean install'
-                }
+                sh 'mvn clean install'
             }
         }
 
         stage('Docker Build') {
             steps {
-                script {
-                    sh 'docker build -t task-management .'
-                }
+                sh 'docker build -t task-management .'
             }
         }
 
