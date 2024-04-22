@@ -745,18 +745,16 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     networks:
       - task-management-network
-    
+
   task-management-web:
     build: .
-    ports:
-      - "9090:9090"
+    expose:
+      - "9090"
     networks:
       - task-management-network
-     
     deploy:
       mode: replicated
       replicas: 6
-  
     volumes:
       - .:/task-management
     environment:
