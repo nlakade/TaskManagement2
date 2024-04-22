@@ -34,13 +34,12 @@ VOLUME /tmp
 
 EXPOSE 9090
 
-# # The application's war file
-# ARG WAR_FILE=target/task-management-0.0.1-SNAPSHOT.war
+# The application's war file
+ARG WAR_FILE=target/task-management-0.0.1-SNAPSHOT.war
 
-# # Add the application's war to the container
-# ADD ${WAR_FILE} task-management-0.0.1-SNAPSHOT.war
+# Add the application's war to the container
+ADD ${WAR_FILE} task-management-0.0.1-SNAPSHOT.war
 
-ADD target/task-management-0.0.1-SNAPSHOT.war task-management-0.0.1-SNAPSHOT.war
 
 # Run the war file
 ENTRYPOINT ["java","-jar","/task-management-0.0.1-SNAPSHOT.war"]
