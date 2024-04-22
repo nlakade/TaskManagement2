@@ -32,7 +32,7 @@ VOLUME /tmp
 
 # Make port 8080 available to the world outside this container
 
-EXPOSE 9090
+EXPOSE 9091
 
 # The application's war file
 ARG WAR_FILE=target/task-management-0.0.1-SNAPSHOT.war
