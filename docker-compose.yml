@@ -749,9 +749,7 @@ services:
   task-management-web:
     build: .
     expose:
-      - "9091"
-    ports:
-      - "9091:9091"
+      - "9090"
     networks:
       - task-management-network
     deploy:
