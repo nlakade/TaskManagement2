@@ -279,53 +279,57 @@
 #     driver: bridge
 
 
-# version: '3.8'
+version: '3.8'
 
-# services:
-#   mysqldb:
-#     container_name: mysqldb
-#     image: mysql:8.0.28
-#     environment:
-#       - MYSQL_ROOT_PASSWORD=Nitesh@123
-#       - MYSQL_DATABASE=task_management
-#     command: --default-authentication-plugin=mysql_native_password
-#     networks:
-#       - task-management-network
+services:
+  mysqldb:
+    container_name: mysqldb
+    image: mysql:8.0.28
+    environment:
+      - MYSQL_ROOT_PASSWORD=Nitesh@123
+      - MYSQL_DATABASE=task_management
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - task-management-network
     
-#   task-management-web:
-#     build: .
-#     ports:
-#       - "9090:9090"
-#     networks:
-#       - task-management-network
-#     volumes:
-#       - .:/task-management
-#     environment:
-#       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
-#       - SPRING_DATASOURCE_USERNAME=root
-#       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
-#       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-#       - hibernate.hbm2ddl.auto=none
-#     depends_on:
-#       - mysqldb
+  task-management-web:
+    build: .
+    ports:
+      - "9090:9090"
+    networks:
+      - task-management-network
+    deploy:
+      mode: replicated
+      replicas: 6
+  
+    volumes:
+      - .:/task-management
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Nitesh@123
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - hibernate.hbm2ddl.auto=none
+    depends_on:
+      - mysqldb
 
-#   nginx:
-#     image: nginx:1.21.0
-#     ports:
-#       - "80:80"
-#     networks:
-#       - task-management-network
-#     volumes:
-#       - ./nginx.conf:/etc/nginx/nginx.conf
-#     depends_on:
-#       - task-management-web
+  nginx:
+    image: nginx:1.21.0
+    ports:
+      - "80:80"
+    networks:
+      - task-management-network
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - task-management-web
 
-# networks:
-#   task-management-network:
-#     driver: bridge
-#     ipam:
-#       config:
-#         - subnet: 10.1.0.0/24
+networks:
+  task-management-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.1.0.0/24
 
 
 # version: '3.8'
@@ -413,106 +417,106 @@
 #         - subnet: 10.1.0.0/24
 
 
-version: '3.8'
+# version: '3.8'
 
-services:
-  mysqldb:
-    container_name: mysqldb
-    image: mysql:8.0.28
-    environment:
-      - MYSQL_ROOT_PASSWORD=Nitesh@123
-      - MYSQL_DATABASE=task_management
-    command: --default-authentication-plugin=mysql_native_password
-    networks:
-      - task-management-network
+# services:
+#   mysqldb:
+#     container_name: mysqldb
+#     image: mysql:8.0.28
+#     environment:
+#       - MYSQL_ROOT_PASSWORD=Nitesh@123
+#       - MYSQL_DATABASE=task_management
+#     command: --default-authentication-plugin=mysql_native_password
+#     networks:
+#       - task-management-network
     
-  task-management-web-1:
-    build:
-      context: .
-      args:
-        WAR_FILE: target/task-management-0.0.1-SNAPSHOT.war
-        APPLICATION_PROPERTIES_FILE: application.properties
-    ports:
-      - "9090:9090"
-    networks:
-      - task-management-network
-    volumes:
-      - .:/task-management
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=Nitesh@123
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - hibernate.hbm2ddl.auto=none
-      - SPRING_PROFILES_ACTIVE=task-management-web-1      
-    depends_on:
-      - mysqldb    
+#   task-management-web-1:
+#     build:
+#       context: .
+#       args:
+#         WAR_FILE: target/task-management-0.0.1-SNAPSHOT.war
+#         APPLICATION_PROPERTIES_FILE: application.properties
+#     ports:
+#       - "9090:9090"
+#     networks:
+#       - task-management-network
+#     volumes:
+#       - .:/task-management
+#     environment:
+#       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
+#       - SPRING_DATASOURCE_USERNAME=root
+#       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
+#       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#       - hibernate.hbm2ddl.auto=none
+#       - SPRING_PROFILES_ACTIVE=task-management-web-1      
+#     depends_on:
+#       - mysqldb    
 
-  task-management-web-2:
-    build:
-      context: .
-      args:
-        WAR_FILE: target/task-management-0.0.1-SNAPSHOT.war
-        APPLICATION_PROPERTIES_FILE: application-1.properties
-    ports:
-      - "9091:9091"  # Corrected port mapping
-    networks:
-      - task-management-network
-    volumes:
-      - .:/task-management
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=Nitesh@123
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - hibernate.hbm2ddl.auto=none
-      - server.port=9091
-      - SPRING_PROFILES_ACTIVE=task-management-web-2     
-    depends_on:
-      - mysqldb    
-
- 
-  task-management-web-3:
-    build:
-      context: .
-      args:
-        WAR_FILE: target/task-management-0.0.1-SNAPSHOT.war
-        APPLICATION_PROPERTIES_FILE: application-2.properties
-    ports:
-      - "9092:9092"  # Corrected port mapping
-    networks:
-      - task-management-network
-    volumes:
-      - .:/task-management
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=Nitesh@123
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-      - hibernate.hbm2ddl.auto=none
-      - server.port=9092
-      - SPRING_PROFILES_ACTIVE=task-management-web-3    
-    depends_on:
-      - mysqldb    
+#   task-management-web-2:
+#     build:
+#       context: .
+#       args:
+#         WAR_FILE: target/task-management-0.0.1-SNAPSHOT.war
+#         APPLICATION_PROPERTIES_FILE: application-1.properties
+#     ports:
+#       - "9091:9091"  # Corrected port mapping
+#     networks:
+#       - task-management-network
+#     volumes:
+#       - .:/task-management
+#     environment:
+#       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
+#       - SPRING_DATASOURCE_USERNAME=root
+#       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
+#       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#       - hibernate.hbm2ddl.auto=none
+#       - server.port=9091
+#       - SPRING_PROFILES_ACTIVE=task-management-web-2     
+#     depends_on:
+#       - mysqldb    
 
  
-  nginx:
-    image: nginx:1.21.0
-    ports:
-      - "80:80"
-    networks:
-      - task-management-network
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - task-management-web-1
-      - task-management-web-2
-      - task-management-web-3
+#   task-management-web-3:
+#     build:
+#       context: .
+#       args:
+#         WAR_FILE: target/task-management-0.0.1-SNAPSHOT.war
+#         APPLICATION_PROPERTIES_FILE: application-2.properties
+#     ports:
+#       - "9092:9092"  # Corrected port mapping
+#     networks:
+#       - task-management-network
+#     volumes:
+#       - .:/task-management
+#     environment:
+#       - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/task_management?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
+#       - SPRING_DATASOURCE_USERNAME=root
+#       - SPRING_DATASOURCE_PASSWORD=Nitesh@123
+#       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#       - hibernate.hbm2ddl.auto=none
+#       - server.port=9092
+#       - SPRING_PROFILES_ACTIVE=task-management-web-3    
+#     depends_on:
+#       - mysqldb    
+
+ 
+#   nginx:
+#     image: nginx:1.21.0
+#     ports:
+#       - "80:80"
+#     networks:
+#       - task-management-network
+#     volumes:
+#       - ./nginx.conf:/etc/nginx/nginx.conf
+#     depends_on:
+#       - task-management-web-1
+#       - task-management-web-2
+#       - task-management-web-3
      
 
-networks:
-  task-management-network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.1.0.0/24
+# networks:
+#   task-management-network:
+#     driver: bridge
+#     ipam:
+#       config:
+#         - subnet: 10.1.0.0/24
