@@ -749,7 +749,7 @@ services:
   task-management-web:
     build: .
     expose:
-      - "9090"
+      - "9090:9090"
     networks:
       - task-management-network
     deploy:
