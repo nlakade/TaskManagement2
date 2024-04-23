@@ -30,6 +30,7 @@ pipeline {
         //         script {
         //             // Run the Spring Boot application in a separate container
         //             sh 'docker run -d -p 9090:9090 task-management'
+        //             // sh 'docker run -d -p 9091:9091 task-management'
 
         //            // // Run the Spring Boot application in a separate container on port 9091
         //            //  sh 'docker run -d -p 9091:9091 task-management'
@@ -65,3 +66,65 @@ pipeline {
         }
     }
 }
+
+
+
+
+// pipeline {
+//     agent any
+
+//     tools {
+//         jdk 'jdk-8' // specify the JDK tool name directly in the tools section
+//     }
+
+//     environment {
+//         JAVA_HOME = tool 'jdk-8'
+//         PATH = "${JAVA_HOME}/bin:${PATH}"
+//     }
+
+//     stages {
+//         stage('Checkout') {
+//             steps {
+//                 checkout scm
+//             }
+//         }
+
+//         stage('Build') {
+//             steps {
+//                 sh 'mvn clean install'
+//             }
+//         }
+
+//         stage('Docker Build') {
+//             steps {
+//                 sh 'docker build -t task-management .'
+//             }
+//         }
+
+//         stage('Docker Compose') {
+//             steps {
+//                 script {
+//                     // Install Docker Compose
+//                     def dockerComposeVersion = '1.29.2'
+//                     def dockerComposeUrl = "https://github.com/docker/compose/releases/download/${dockerComposeVersion}/docker-compose-$(uname -s)-$(uname -m)"
+//                     def workspaceDir = pwd()
+//                     sh "curl -L ${dockerComposeUrl} -o ${workspaceDir}/docker-compose"
+//                     sh "chmod +x ${workspaceDir}/docker-compose"
+
+//                     // Check Docker Compose version
+//                     sh "${workspaceDir}/docker-compose --version"
+
+//                     // Run Docker Compose
+//                     sh "${workspaceDir}/docker-compose up -d"
+//                 }
+//             }
+//         }
+//     }
+
+//     post {
+//         always {
+//             // Optional: run tests on the built Docker image
+//             sh 'docker run --rm task-management mvn test'
+//         }
+//     }
+// }
