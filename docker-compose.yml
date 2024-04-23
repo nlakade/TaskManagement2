@@ -754,7 +754,7 @@ services:
       - task-management-network
     deploy:
       mode: replicated
-      replicas: 6
+      replicas: 1
     volumes:
       - .:/task-management
     environment:
